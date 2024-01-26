@@ -2,9 +2,9 @@ import axios from "axios";
 
 //  fetching using axios
 
-export const getServices = async () => {
-  return await axios.get("http://localhost:5000/api/v1/services");
-};
+// export const getServices = async () => {
+//   return await axios.get("http://localhost:5000/api/v1/services");
+// };
 
 // manually fetching using fetch
 // export const getServices = async () => {
@@ -17,3 +17,13 @@ export const getServices = async () => {
 //     }
 //     return res;
 //   };
+
+export const getServices = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/api/v1/services");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    throw new Error("Failed to fetch services");
+  }
+};
