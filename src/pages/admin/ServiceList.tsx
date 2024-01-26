@@ -6,14 +6,18 @@ const ServiceList = () => {
     queryKey: ["services"],
     queryFn: getServices,
   });
+  console.log({ isLoading, data, isError });
+
   if (isLoading) {
     return <h2>loading</h2>;
   }
-  console.log({ isLoading, data });
+  if (isError) {
+    return <h2>something wrong</h2>;
+  }
   return (
     <div>
-      {data.data.map((item) => (
-        <h1 key={item.name}>{item.name}</h1>
+      {data?.data?.map((item) => (
+        <h1 key={item?.name}>{item?.name}</h1>
       ))}
     </div>
   );
